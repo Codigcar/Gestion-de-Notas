@@ -10,8 +10,20 @@
                 <label for="">Texto</label>
                 <textarea class="form-control" v-model="nota.texto"></textarea>
             </div>
+            <button class="btn btn-primary" @click="agregarNota">Enviar</button>
         </div>
-        <button class="btn btn-primary" @click="agregarNota">Enviar</button>
+        <div class="col-sm-12">
+            <div class="col-sm-4 nota" v-for="nota in notas" v-bind:key="nota" >
+                <div class="card">
+                    <div class="card-block" >
+                        <div class="card-title">{{ nota.titulo }}</div>
+                        <div class="card-subtitle mb-2 text-muted">{{ nota.fecha }}</div>
+                        <p class="card-text">{{ nota.texto }}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 </template>
 
@@ -42,15 +54,26 @@
                     titulo,
                     fecha: new Date(Date.now()).toLocaleString()
                 })
-
+                this.nota.texto='';
+                this.nota.titulo='';
             }
         }
     }
 </script>
 
-<style scoped>
+<style>
     .form{
         text-align: left;
+    }
+    .card{
+        text-align: left;
+        border: 1px solid #2c3e50;
+        border-radius: 4px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .nota{
+        padding: 5px;
     }
 
 </style>
