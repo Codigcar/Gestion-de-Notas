@@ -10,7 +10,7 @@
                 <label for="">Texto</label>
                 <textarea class="form-control" v-model="nota.texto"></textarea>
             </div>
-            <button class="btn btn-primary" @click="agregarNota">Enviar</button>
+            <button class="btn btn-primary" v-bind:disabled="nota.titulo.length === 0 || nota.texto.length === 0" @click="agregarNota">Agregar</button>
         </div>
         <div class="col-sm-12">
             <div class="col-sm-4 nota" v-for="(nota, index) in notas" v-bind:key="nota" >
@@ -39,8 +39,8 @@
                 },
                 notas:[
                     {
-                        titulo:'Ir al Colegio',
-                        texto:'Curso 1 a las 9.00 a.m.',
+                        titulo:'Almuerzo',
+                        texto:'2:00 p.m. - 3:00 p.m.',
                         fecha: new Date(Date.now()).toLocaleDateString()
                     }
                 ]
