@@ -13,15 +13,15 @@
             <button class="btn btn-primary" @click="agregarNota">Enviar</button>
         </div>
         <div class="col-sm-12">
-            <div class="col-sm-4 nota" v-for="nota in notas" v-bind:key="nota" >
+            <div class="col-sm-4 nota" v-for="(nota, index) in notas" v-bind:key="nota" >
                 <div class="card">
                     <div class="card-block" >
                         <div class="card-title">{{ nota.titulo }}</div>
                         <div class="card-subtitle mb-2 text-muted">{{ nota.fecha }}</div>
                         <p class="card-text">{{ nota.texto }}</p>
                     </div>
+                    <button class="close" @click="eliminarNota(index)">&times;</button>
                 </div>
-
             </div>
         </div>
     </div>
@@ -56,6 +56,9 @@
                 })
                 this.nota.texto='';
                 this.nota.titulo='';
+            },
+            eliminarNota:function (index) {
+                this.notas.splice(index,1);
             }
         }
     }
